@@ -1,0 +1,13 @@
+function f = non_smooth_f(X);
+ zthres = 0.9;
+ xthres = 0.9;
+ in1 = find(X(:,3) > zthres);
+ in2 = find(X(:,1) > xthres);
+ f = zeros(size(X(:,3)));
+ f1 = f;
+ f2 = f;
+ f1(in1) = X(in1,3)-zthres;
+ f2(in2) = X(in2,1)-xthres;
+ f = f1+f2;
+ f=f.^(1/3);
+ f = X(:,3);
